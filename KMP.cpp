@@ -5,7 +5,7 @@
 using namespace std;
 
 vector<int> build_table(string& pattern) {
-    vector<int> v(pattern.size()+1, 0);
+    vector<int> v(pattern.size()+1, -1);
     int i, j;
 
     for (j = 0; j < pattern.size(); ++j) {
@@ -44,7 +44,8 @@ int KMP(string& s, string& pattern) {
             ;
         if (j == len_p)
             return k-len_p;
-        i += j > 0 ? j - table[j] : 1;
+        // i += j > 0 ? j - table[j] : 1;
+        i += j - table[j];
     }
     return -1;
 }
